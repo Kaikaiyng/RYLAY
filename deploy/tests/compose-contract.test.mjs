@@ -58,7 +58,7 @@ test('environment examples preserve staging and production boundaries without va
   assert.match(production, /DEPLOYMENT_MODE=prelaunch-production/)
   assert.match(production, /TENANCY_MODE=dedicated/)
   assert.match(production, /TENANCY_DEDICATED_TENANT_SLUG=mis/)
-  assert.match(production, /COMMUNITY_DEVELOPER_NAME=Matahari/)
+  assert.match(production, /COMMUNITY_DEVELOPER_NAME=RYLAY/)
   assert.match(production, /COMMUNITY_ACCOUNT_DELETION_URL=https:\/\//)
   assert.match(production, /MOBILE_APP_HTTP_PORT=18083/)
   assert.match(production, /DB_USERNAME=rylay_production_app/)

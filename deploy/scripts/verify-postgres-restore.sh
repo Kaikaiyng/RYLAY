@@ -67,7 +67,7 @@ done
 [ -n "$verify_database" ] || { usage; fail 'Verification database is required.'; }
 case "$verify_database" in
   rylay|rylay_production|rylay_staging)
-    fail 'Refusing to restore into a protected Matahari database.'
+    fail 'Refusing to restore into a protected RYLAY database.'
     ;;
 esac
 [ "${#verify_database}" -le 63 ] && printf '%s' "$verify_database" | grep -Eq '^rylay_restore_verify_[a-z0-9][a-z0-9_]*$' || fail 'Verification database must use the rylay_restore_verify_<name> allowlisted pattern.'

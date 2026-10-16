@@ -128,7 +128,7 @@ test('argument guards fail before any PostgreSQL command can run', { skip: shell
       '--archive', 'missing.dump', '--database', database,
     ], { RYLAY_POSTGRES_RESTORE_VERIFY: '1' })
     assert.notEqual(protectedRestore.status, 0)
-    assert.match(protectedRestore.stderr, /protected Matahari database/)
+    assert.match(protectedRestore.stderr, /protected RYLAY database/)
   }
 
   const unapprovedRestore = runScript(verifyPath, [
