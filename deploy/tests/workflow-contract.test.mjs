@@ -21,7 +21,7 @@ test('full qualification includes Laravel, frontend, advisory, deployment, and P
 
   assert.match(workflow, /image: postgres:18\.6-bookworm/)
   assert.match(workflow, /DB_CONNECTION: pgsql/)
-  assert.match(workflow, /MATAHARI_PGSQL_TEST_ALLOW_RESET: '1'/)
+  assert.match(workflow, /RYLAY_PGSQL_TEST_ALLOW_RESET: '1'/)
   assert.match(workflow, /php artisan test/)
   assert.match(workflow, /php artisan migrate --force/)
   assert.match(workflow, /php artisan migrate:rollback --force/)

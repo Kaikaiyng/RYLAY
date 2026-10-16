@@ -1,4 +1,6 @@
-# Matahari School App
+# RYLAY School App
+
+This client belongs to the RYLAY platform repository. Matahari/MIS runtime labels below describe the configured school tenant. The independent Matahari product is a separate project.
 
 This is the independent mobile-first web workspace for Matahari Parent, Student, and Teacher users. Higher employee access remains within the Teacher persona through explicit User Abilities. The App has its own login, build, tests, deployment surface, and domain boundary. It fetches `/api/tenant-context`, requires an `app` surface, and applies MIS branding/features. It shares the Laravel API and authoritative database with the Admin Panel but not its frontend runtime.
 

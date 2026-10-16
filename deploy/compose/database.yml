@@ -37,7 +37,7 @@ services:
 
 volumes:
   postgres_data:
-    name: matahari_postgres_data
+    name: rylay_postgres_data
 
 networks:
   database:

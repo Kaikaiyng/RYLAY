@@ -16,11 +16,11 @@ abstract class TestCase extends BaseTestCase
 
         // Check before RefreshDatabase / DatabaseMigrations can erase any tables.
         if ($connection->getDriverName() === 'pgsql') {
-            if (env('MATAHARI_PGSQL_TEST_ALLOW_RESET') !== '1'
+            if (env('RYLAY_PGSQL_TEST_ALLOW_RESET') !== '1'
                 || $connection->getConfig('url')
-                || $connection->getDatabaseName() !== 'matahari_test'
-                || $connection->selectOne('SELECT current_database() AS name')->name !== 'matahari_test') {
-                throw new \RuntimeException('PostgreSQL tests require explicit MATAHARI_PGSQL_TEST_ALLOW_RESET=1, empty DB_URL, and the disposable matahari_test database.');
+                || $connection->getDatabaseName() !== 'rylay_test'
+                || $connection->selectOne('SELECT current_database() AS name')->name !== 'rylay_test') {
+                throw new \RuntimeException('PostgreSQL tests require explicit RYLAY_PGSQL_TEST_ALLOW_RESET=1, empty DB_URL, and the disposable rylay_test database.');
             }
         }
 

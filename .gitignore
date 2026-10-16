@@ -5,3 +5,6 @@
 /deploy/artifacts/
 /frontend/test-results/
 /.worktrees/
+
+# Independent local runtime and private development state
+/.local/

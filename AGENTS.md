@@ -1,8 +1,8 @@
-# Matahari Agent Instructions
+# RYLAY Agent Instructions
 
 ## Project Summary
 
-Matahari is the independent school administration, finance, attendance, and School App delivery project for Matahari International School (MIS). RYLAY SaaS expansion is deferred until the first school is operational. The repository contains one Laravel 13 JSON API, an Admin-only React 19/TypeScript workspace in `frontend/`, and an independent mobile-first multi-role React workspace in `app/`. Both clients share the backend and authoritative database and remain separate builds. Existing tenant, membership, school, branding, and feature structures are retained. The current deployment mode locks hostname resolution to MIS and disables SaaS platform routes; production and native-store readiness remain incomplete.
+RYLAY is the original multi-tenant school administration platform. The existing deployment remains dedicated to MIS until a separately reviewed SaaS release. Its Laravel API, Admin (`frontend/`) and School App (`app/`) remain separate builds. This repository is `/Users/kaiyangchong/Project/RYLAY` with origin `https://github.com/Kaikaiyng/RYLAY.git`. The standalone school product is a separate project at `/Users/kaiyangchong/Project/Matahari`, origin `https://github.com/Kaikaiyng/Matahari.git`. Do not synchronize configuration or databases between them. School branding and historical MIS identifiers remain school-owned records. All tenant, permission and school-scope guards below remain mandatory in RYLAY.
 
 ## Read Before Editing
 

@@ -86,8 +86,8 @@ checksum="$archive.sha256"
 [ ! -e "$checksum" ] || fail 'Refusing to overwrite an existing backup checksum.'
 
 umask 077
-temporary_archive="$(mktemp "$output_directory/.matahari-postgres-backup.XXXXXX")"
-temporary_checksum="$(mktemp "$output_directory/.matahari-postgres-checksum.XXXXXX")"
+temporary_archive="$(mktemp "$output_directory/.rylay-postgres-backup.XXXXXX")"
+temporary_checksum="$(mktemp "$output_directory/.rylay-postgres-checksum.XXXXXX")"
 published_archive=0
 published_checksum=0
 completed=0

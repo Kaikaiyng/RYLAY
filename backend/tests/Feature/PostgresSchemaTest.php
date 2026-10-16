@@ -14,7 +14,7 @@ class PostgresSchemaTest extends TestCase
     public function test_postgres_preserves_financial_and_tenant_database_guards(): void
     {
         if (DB::getDriverName() !== 'pgsql') {
-            $this->markTestSkipped('PostgreSQL schema inspection requires the disposable matahari_test database.');
+            $this->markTestSkipped('PostgreSQL schema inspection requires the disposable rylay_test database.');
         }
 
         $this->assertStringContainsString('PostgreSQL', DB::selectOne('SELECT version() AS version')->version);
