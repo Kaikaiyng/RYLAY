@@ -56,9 +56,9 @@ test('PostgreSQL backup requires a real output directory and cannot overwrite an
 test('restore verification requires opt-in and a new allowlisted disposable database', async () => {
   const script = await readFile(verifyPath, 'utf8')
 
-  assert.match(script, /MATAHARI_POSTGRES_RESTORE_VERIFY/)
-  assert.match(script, /matahari_restore_verify_/)
-  assert.match(script, /matahari\|matahari_production\|matahari_staging/)
+  assert.match(script, /RYLAY_POSTGRES_RESTORE_VERIFY/)
+  assert.match(script, /rylay_restore_verify_/)
+  assert.match(script, /rylay\|rylay_production\|rylay_staging/)
   assert.match(script, /SELECT count\(\*\) FROM pg_database/)
   assert.match(script, /createdb/)
   assert.match(script, /Refusing plaintext password input/)
@@ -105,41 +105,41 @@ test('restore verification checks critical counts and sequence position without 
 })
 
 test('argument guards fail before any PostgreSQL command can run', { skip: shell === null }, () => {
-  const missingOutput = runScript(backupPath, ['--database', 'matahari_production'])
+  const missingOutput = runScript(backupPath, ['--database', 'rylay_production'])
   assert.notEqual(missingOutput.status, 0)
   assert.match(missingOutput.stderr, /Output directory is required/)
 
   const passwordArgument = runScript(backupPath, [
-    '--database', 'matahari_production', '--output-directory', '.', '--password=redacted',
+    '--database', 'rylay_production', '--output-directory', '.', '--password=redacted',
   ])
   assert.notEqual(passwordArgument.status, 0)
   assert.match(passwordArgument.stderr, /Refusing plaintext password input/)
 
   const passwordEnvironment = runScript(
     backupPath,
-    ['--database', 'matahari_production', '--output-directory', '.'],
+    ['--database', 'rylay_production', '--output-directory', '.'],
     { PGPASSWORD: 'redacted' },
   )
   assert.notEqual(passwordEnvironment.status, 0)
   assert.match(passwordEnvironment.stderr, /Refusing plaintext password input through PGPASSWORD/)
 
-  for (const database of ['matahari', 'matahari_staging', 'matahari_production']) {
+  for (const database of ['rylay', 'rylay_staging', 'rylay_production']) {
     const protectedRestore = runScript(verifyPath, [
       '--archive', 'missing.dump', '--database', database,
-    ], { MATAHARI_POSTGRES_RESTORE_VERIFY: '1' })
+    ], { RYLAY_POSTGRES_RESTORE_VERIFY: '1' })
     assert.notEqual(protectedRestore.status, 0)
-    assert.match(protectedRestore.stderr, /protected Matahari database/)
+    assert.match(protectedRestore.stderr, /protected RYLAY database/)
   }
 
   const unapprovedRestore = runScript(verifyPath, [
     '--archive', 'missing.dump', '--database', 'temporary_restore',
-  ], { MATAHARI_POSTGRES_RESTORE_VERIFY: '1' })
+  ], { RYLAY_POSTGRES_RESTORE_VERIFY: '1' })
   assert.notEqual(unapprovedRestore.status, 0)
-  assert.match(unapprovedRestore.stderr, /matahari_restore_verify_<name>/)
+  assert.match(unapprovedRestore.stderr, /rylay_restore_verify_<name>/)
 
   const noOptIn = runScript(verifyPath, [])
   assert.notEqual(noOptIn.status, 0)
-  assert.match(noOptIn.stderr, /MATAHARI_POSTGRES_RESTORE_VERIFY=1/)
+  assert.match(noOptIn.stderr, /RYLAY_POSTGRES_RESTORE_VERIFY=1/)
 })
 
 test('PostgreSQL recovery scripts have valid POSIX shell syntax', { skip: shell === null }, () => {

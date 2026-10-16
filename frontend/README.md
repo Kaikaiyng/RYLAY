@@ -1,4 +1,6 @@
-# Matahari Admin Panel
+# RYLAY Admin Panel
+
+This client belongs to the RYLAY platform repository. Matahari/MIS runtime labels below describe the configured school tenant. The independent Matahari product is a separate project.
 
 The frontend is the Admin-only React and TypeScript administration/finance workspace for Matahari International School. School App functionality lives in the separate root `app/` workspace. At startup it fetches `/api/tenant-context`, requires an `admin` surface, and applies MIS labels, logo, colors and feature flags from the retained tenant configuration. Dedicated backend mode rejects every other tenant.
 

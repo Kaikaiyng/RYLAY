@@ -2,7 +2,7 @@
 set -eu
 
 usage() {
-  echo 'Usage: verify-postgres-restore.sh --archive <backup.dump> --database <matahari_restore_verify_name> [--host <host>] [--port <port>] [--username <user>]' >&2
+  echo 'Usage: verify-postgres-restore.sh --archive <backup.dump> --database <rylay_restore_verify_name> [--host <host>] [--port <port>] [--username <user>]' >&2
 }
 
 fail() {
@@ -61,16 +61,16 @@ while [ "$#" -gt 0 ]; do
   esac
 done
 
-[ "${MATAHARI_POSTGRES_RESTORE_VERIFY:-}" = 1 ] || fail 'Set MATAHARI_POSTGRES_RESTORE_VERIFY=1 to create a disposable restore-verification database.'
+[ "${RYLAY_POSTGRES_RESTORE_VERIFY:-}" = 1 ] || fail 'Set RYLAY_POSTGRES_RESTORE_VERIFY=1 to create a disposable restore-verification database.'
 [ -z "${PGPASSWORD:-}" ] || fail 'Refusing plaintext password input through PGPASSWORD; use PGPASSFILE or another PostgreSQL credential provider.'
 [ -n "$archive" ] || { usage; fail 'Archive is required.'; }
 [ -n "$verify_database" ] || { usage; fail 'Verification database is required.'; }
 case "$verify_database" in
-  matahari|matahari_production|matahari_staging)
-    fail 'Refusing to restore into a protected Matahari database.'
+  rylay|rylay_production|rylay_staging)
+    fail 'Refusing to restore into a protected RYLAY database.'
     ;;
 esac
-[ "${#verify_database}" -le 63 ] && printf '%s' "$verify_database" | grep -Eq '^matahari_restore_verify_[a-z0-9][a-z0-9_]*$' || fail 'Verification database must use the matahari_restore_verify_<name> allowlisted pattern.'
+[ "${#verify_database}" -le 63 ] && printf '%s' "$verify_database" | grep -Eq '^rylay_restore_verify_[a-z0-9][a-z0-9_]*$' || fail 'Verification database must use the rylay_restore_verify_<name> allowlisted pattern.'
 [ "${#username}" -le 63 ] && printf '%s' "$username" | grep -Eq '^[A-Za-z_][A-Za-z0-9_]*$' || fail 'Username must be a PostgreSQL identifier of at most 63 characters.'
 printf '%s' "$host" | grep -Eq '^[A-Za-z0-9._:-]+$' || fail 'Host contains unsupported characters.'
 printf '%s' "$port" | grep -Eq '^[0-9]+$' || fail 'Port must be numeric.'

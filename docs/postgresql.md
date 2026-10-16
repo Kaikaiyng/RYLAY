@@ -1,3 +1,7 @@
+> **Independent RYLAY defaults:** New databases/configuration use `rylay`, `rylay_staging`, `rylay_production`, and disposable `rylay_test` with `RYLAY_PGSQL_TEST_ALLOW_RESET=1`. Historical Matahari database/cluster names below describe earlier installations; no existing database or cluster was renamed.
+
+> **Project identity (2026-10-16):** This is RYLAY (`Kaikaiyng/RYLAY`). The standalone Matahari system is a separate repository and database. MIS/Matahari school branding below is tenant data; the existing dedicated-mode restrictions remain in force.
+
 # PostgreSQL
 
 PostgreSQL 18.6 is the Matahari development and deployment database from 2026-09-04. Admin and School App share one Laravel API and database. Tenant, school, permissions, financial-history and audit boundaries remain enforced. Dedicated mode separately locks runtime resolution to the `mis` tenant and disables platform tenant-management routes.

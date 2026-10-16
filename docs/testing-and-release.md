@@ -1,3 +1,5 @@
+> **Project identity (2026-10-16):** This is RYLAY (`Kaikaiyng/RYLAY`). The standalone Matahari system is a separate repository and database. MIS/Matahari school branding below is tenant data; the existing dedicated-mode restrictions remain in force.
+
 # Testing and Release
 
 **Status:** Repository command and release reference

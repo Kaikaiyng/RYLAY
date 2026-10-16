@@ -1,3 +1,5 @@
+> **Project identity (2026-10-16):** This is RYLAY (`Kaikaiyng/RYLAY`). The standalone Matahari system is a separate repository and database. MIS/Matahari school branding below is tenant data; the existing dedicated-mode restrictions remain in force.
+
 # Current Status
 
 ## 2026-09-06 Live parent directory
@@ -16,7 +18,7 @@
 
 - Student Detail now offers **Edit Profile** to users with `students.update`, using the existing school-scoped, transactionally audited update API. The drawer edits student number/name, level/profile class, gender, birth/registration dates and remarks, sends only changed fields, and refreshes detail and list after saving.
 - Validation keeps the draft and focuses the first field error; cancelling a changed draft asks before discarding it. Session expiry uses the existing login flow. Status remains a separate action; profile class changes explicitly do not change academic-year enrolments or historical financial snapshots.
-- Local Admin regression: **213/213 tests passed**, including seven new editor/integration cases; production build and TypeScript passed. Existing backend student-management/business-audit regression passed **13/13 tests, 78 assertions** on SQLite. No backend or schema changes are included. Oxlint completed with the existing Calendar Fast Refresh and Dashboard hook warnings, and Vite retained its bundle-size advisory. The combined release subsequently passed [GitHub run 34016761118](https://github.com/Kaikaiyng/Matahari/actions/runs/34016761118).
+- Local Admin regression: **213/213 tests passed**, including seven new editor/integration cases; production build and TypeScript passed. Existing backend student-management/business-audit regression passed **13/13 tests, 78 assertions** on SQLite. No backend or schema changes are included. Oxlint completed with the existing Calendar Fast Refresh and Dashboard hook warnings, and Vite retained its bundle-size advisory. The combined release subsequently passed [GitHub run 34016761118](https://github.com/Kaikaiyng/RYLAY/actions/runs/34016761118).
 - Guardian record editing, full account administration/password recovery, real Excel onboarding, hosted environments and native/store delivery remain incomplete.
 
 ## 2026-09-06 First-school onboarding and recovery tools
@@ -25,7 +27,7 @@
 - Added custom-format PostgreSQL backup and explicitly guarded disposable restore tools. Local rehearsal restored the development backup into a new database; all 84 table contents and sequence values matched the source. Backups and credentials remain outside Git. Scheduling, off-site storage, files and production recovery remain operational work. See [Recovery](postgresql-recovery.md).
 - Fixed a flaky Audit search test: random three-digit fixture IDs could collide with another audit identifier/request UUID. Deterministic unique fixture IDs now test the same production search without accidental matches.
 - Local regression: **428 discovered; SQLite 415 passed / 13 skipped / 2,332 assertions; PostgreSQL 407 passed / 21 skipped / 2,318 assertions**. CSV-focused tests passed **8/8, 58 assertions**. Pint, API route loading and **26/26** deployment tests passed. No schema migration or client runtime change is included.
-- GitHub Actions use the official v7 releases with Node 24. Full qualification additionally rehearses backup/restore with fictional seeded data in the PostgreSQL service and compares source/restored data and sequences. This batch passed [run 33998872044](https://github.com/Kaikaiyng/Matahari/actions/runs/33998872044).
+- GitHub Actions use the official v7 releases with Node 24. Full qualification additionally rehearses backup/restore with fictional seeded data in the PostgreSQL service and compares source/restored data and sequences. This batch passed [run 33998872044](https://github.com/Kaikaiyng/RYLAY/actions/runs/33998872044).
 - Actual MIS Excel mapping/import, guardian/account onboarding, approved finance opening data, hosted environments, native authentication, Android/iOS packaging and store submission remain incomplete. Native architecture findings are recorded in the [mobile roadmap](mobile-product-roadmap.md); no native authentication or store binary is claimed.
 
 ## 2026-09-05 Matahari dedicated mode and store safeguards

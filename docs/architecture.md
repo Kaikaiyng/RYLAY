@@ -1,3 +1,5 @@
+> **Project identity (2026-10-16):** This is RYLAY (`Kaikaiyng/RYLAY`). The standalone Matahari system is a separate repository and database. MIS/Matahari school branding below is tenant data; the existing dedicated-mode restrictions remain in force.
+
 # Architecture
 
 **2026-09-05 product direction:** The active project is Matahari. RYLAY SaaS is deferred. Existing tenant, membership, permission, branding and feature structures remain, while dedicated deployment enforcement is active.

@@ -1,0 +1,19 @@
+name: Pull request qualification
+
+on:
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-qualification-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  qualification:
+    name: Full qualification
+    uses: ./.github/workflows/full-qualification.yml
+    with:
+      commit: ${{ github.event.pull_request.head.sha }}

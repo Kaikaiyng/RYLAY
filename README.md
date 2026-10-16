@@ -1,10 +1,10 @@
-# Matahari — School Administration and School App
+# RYLAY — School Administration Platform
 
-Matahari is the school administration, finance, attendance, and School App project for Matahari International School (MIS). The immediate goal is the first school delivery: an Admin/Finance browser surface and a Teacher/Parent/Student School App, with App Store and Google Play delivery still pending. RYLAY SaaS development is deferred. Both clients retain the existing Laravel API, host-resolved organization context, and separate builds. The system is not yet production-ready or a native store release.
+RYLAY is the original school administration platform with a shared Laravel API, Admin client (`frontend/`) and School App (`app/`). Its existing tenant, membership, verified-host, branding, feature and school-scoped authorization structures remain intact. The current local delivery still runs in dedicated MIS mode; this naming split does not expose SaaS platform routes or change production tenancy settings.
 
-The existing tenant, membership, school, branding, and feature structures remain in place to preserve authorization and data integrity. `TENANCY_MODE=dedicated` locks the running product to the `mis` tenant and disables SaaS platform-management routes. A future RYLAY release can explicitly select multi-tenant mode without forking the schema or application code.
+This project is independent from [Matahari](https://github.com/Kaikaiyng/Matahari), the separate school-only project at `/Users/kaiyangchong/Project/Matahari`. RYLAY lives at `/Users/kaiyangchong/Project/RYLAY` and its only origin is `https://github.com/Kaikaiyng/RYLAY.git`. Each project owns its own database, secrets, dependencies and deployment configuration.
 
-Tenant branding is runtime configuration. Branding changes never authorize rewriting tenant identity, student numbers, invoice numbers, receipt numbers, or other historical records. See [SaaS Multi-Tenancy](docs/saas-multitenancy.md).
+Matahari International School / MIS names in RYLAY's seeded tenant branding and historical financial identifiers describe the school, not the platform identity. Preserve those records. The existing feature list and operational limitations below remain the inherited implementation baseline.
 
 ## Current Scope
 
@@ -46,7 +46,7 @@ Important boundaries:
 
 | Area | Repository version or implementation |
 | --- | --- |
-| Backend | PHP `^8.3`, Laravel Framework `13.17.0` from `composer.lock` |
+| Backend | PHP `^8.3`, Laravel Framework `13.36.0` from `composer.lock` |
 | Admin and App frontends | Separate React `19.2.7`, TypeScript `6.0.x`, Vite `8.1.0` workspaces |
 | Authentication | Laravel `web` guard with session cookies |
 | Production database direction | PostgreSQL 18 |
@@ -80,7 +80,9 @@ Future coding agents must also read [AGENTS.md](AGENTS.md).
 
 ## Local Development
 
-The main environment uses PostgreSQL. See [PostgreSQL setup and data preservation](docs/postgresql.md), then start it with `tools\php\serve-backend.cmd`. The SQLite instructions below are an optional legacy demo, not the active database.
+On macOS, configure this checkout's private `backend/.env` and its own database, install backend/Admin/App dependencies, then run `python3 tools/dev.py start`. Use `python3 tools/dev.py status` or `stop` for the launcher's recorded processes. Local URLs are Admin `http://localhost:5173`, App `http://127.0.0.1:5174`, API loopback 8000. `rylay_session` is distinct from the independent Matahari project's Cookie. The launcher never initializes or resets databases.
+
+PostgreSQL remains the development/production direction. New RYLAY deployment database names use `rylay_staging` / `rylay_production`; PostgreSQL qualification uses disposable `rylay_test` and `RYLAY_PGSQL_TEST_ALLOW_RESET=1`. Existing historical databases are not renamed by this source-only identity change. The Windows commands below remain available; see [PostgreSQL](docs/postgresql.md) before configuring a new connection.
 
 ## Optional SQLite Demo Setup
 
