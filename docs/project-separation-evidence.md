@@ -14,4 +14,4 @@ Local launch: `python3 tools/dev.py start|stop|status`; it never initializes/res
 
 Inherited Composer locks have five security advisories across four packages (Laravel Framework, CommonMark, Flysystem, Symfony HttpFoundation); security qualification is not passed. No production release, automatic merge or deployment is included. Existing lint/bundle warnings remain. GitHub full qualification, Windows runtime and production readiness are not claimed.
 
-Review handoff: [RYLAY #14](https://github.com/Kaikaiyng/RYLAY/pull/14), with the standalone implementation in [Matahari #1](https://github.com/Kaikaiyng/Matahari/pull/1). Both remain draft/unmerged; local checkouts run the reviewed feature branches.
+Review handoff: [RYLAY #14](https://github.com/Kaikaiyng/RYLAY/pull/14), with the standalone implementation in [Matahari #1](https://github.com/Kaikaiyng/Matahari/pull/1). These links identify the delivered review history; current readiness and hosted results are recorded in [GitHub baseline evidence](github-readiness.md).

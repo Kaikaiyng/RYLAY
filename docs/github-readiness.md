@@ -1,6 +1,6 @@
 # GitHub development baseline — 2026-10-16
 
-The project separation PR is being prepared for merge to the repository default branch. This is a development baseline update, not a production deployment.
+This update establishes the repository default-branch development baseline through its separation PR. This is a development baseline update, not a production deployment.
 
 ## Security updates
 
@@ -25,3 +25,5 @@ GitHub-hosted execution and merge results must be verified separately; local pas
 ## GitHub environment corrections
 
 The first hosted run exposed differences hidden by local private configuration. Public policy tests now explicitly configure the RYLAY developer identity, and the runtime fallback matches RYLAY. School/MIS branding remains separate. The PostgreSQL regression suite was rerun after this correction.
+
+Hosted full qualification passed for the security/CI fixes: [GitHub run 38852627943](https://github.com/Kaikaiyng/RYLAY/actions/runs/38852627943). Historical Actions links now target the renamed original RYLAY repository, preserving evidence ownership. Final merge readiness is read from the PR checks for its latest head.
