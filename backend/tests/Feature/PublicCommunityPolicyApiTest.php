@@ -15,6 +15,7 @@ class PublicCommunityPolicyApiTest extends TestCase
     {
         parent::setUp();
         $this->seed();
+        config()->set('community_safety.developer_name', 'RYLAY');
         config()->set('community_safety.support_email', 'support@example.test');
         config()->set('community_safety.child_safety_contact_email', 'safety@example.test');
     }
@@ -24,7 +25,7 @@ class PublicCommunityPolicyApiTest extends TestCase
         $response = $this->getJson('http://127.0.0.1/api/v1/public/community-policies/child-safety')
             ->assertOk()
             ->assertJsonPath('data.slug', 'child-safety')
-            ->assertJsonPath('data.developer_name', 'Matahari')
+            ->assertJsonPath('data.developer_name', 'RYLAY')
             ->assertJsonPath('data.organization_name', 'Matahari International School')
             ->assertJsonPath('data.support.child_safety_email', 'safety@example.test');
 

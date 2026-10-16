@@ -21,3 +21,7 @@ Admin 219 tests and School App 59 tests passed. Each client passed Oxlint and Ty
 Commands: backend `php vendor/bin/phpunit`, `php vendor/bin/pint --test`, `composer validate --no-check-publish`, `composer audit --locked`, API route loading; per client `npm test -- --maxWorkers=2`, `npm run lint`, `npm run build`, `npm audit --audit-level=moderate`; root `node --test deploy/tests/*.test.mjs`. PostgreSQL tests require the project's explicit reset opt-in and disposable database guard.
 
 GitHub-hosted execution and merge results must be verified separately; local passes do not claim remote CI or production readiness. Existing lint/bundle advisories remain warnings, not errors. No production hosting or automatic deployment is configured by this change.
+
+## GitHub environment corrections
+
+The first hosted run exposed differences hidden by local private configuration. Public policy tests now explicitly configure the RYLAY developer identity, and the runtime fallback matches RYLAY. School/MIS branding remains separate. The PostgreSQL regression suite was rerun after this correction.
