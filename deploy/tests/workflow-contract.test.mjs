@@ -41,3 +41,12 @@ test('foundation workflows do not request deployment secrets or write repository
   assert.doesNotMatch(combined, /contents: write|pull-requests: write/)
   assert.doesNotMatch(combined, /^\s+(?:ssh|scp|rsync)\s/im)
 })
+
+test('pull requests run full qualification on their exact head commit', async () => {
+  const workflow = await readFile('.github/workflows/pull-request.yml', 'utf8')
+  assert.match(workflow, /pull_request:/)
+  assert.match(workflow, /permissions:\s+contents: read/)
+  assert.match(workflow, /uses: \.\/\.github\/workflows\/full-qualification\.yml/)
+  assert.match(workflow, /commit: \$\{\{ github\.event\.pull_request\.head\.sha \}\}/)
+  assert.doesNotMatch(workflow, /secrets: inherit|contents: write|pull_request_target/)
+})

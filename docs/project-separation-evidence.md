@@ -1,3 +1,5 @@
+> **GitHub readiness update:** The dependency audit blockers recorded at initial separation have been resolved. See [current security and CI evidence](github-readiness.md). Historical separation results below remain dated evidence.
+
 # RYLAY project identity separation — 2026-10-16
 
 RYLAY is the original tenant-aware platform at `/Users/kaiyangchong/Project/RYLAY`, origin `Kaikaiyng/RYLAY`. The independent school-only product lives at `/Users/kaiyangchong/Project/Matahari`, origin `Kaikaiyng/Matahari`. Their databases, private configuration, application keys, dependency directories and session Cookie names are independent. Existing school branding and historical MIS identifiers are preserved.

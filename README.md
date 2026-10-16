@@ -46,7 +46,7 @@ Important boundaries:
 
 | Area | Repository version or implementation |
 | --- | --- |
-| Backend | PHP `^8.3`, Laravel Framework `13.17.0` from `composer.lock` |
+| Backend | PHP `^8.3`, Laravel Framework `13.36.0` from `composer.lock` |
 | Admin and App frontends | Separate React `19.2.7`, TypeScript `6.0.x`, Vite `8.1.0` workspaces |
 | Authentication | Laravel `web` guard with session cookies |
 | Production database direction | PostgreSQL 18 |

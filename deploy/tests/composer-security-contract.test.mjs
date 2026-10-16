@@ -36,3 +36,18 @@ test('Composer lock excludes the known vulnerable CommonMark range', async () =>
     `league/commonmark ${commonmark.version} is below the audited minimum 2.9.0`,
   )
 })
+
+for (const [name, minimum] of [
+  ['laravel/framework', '13.30.0'],
+  ['league/commonmark', '2.10.2'],
+  ['league/flysystem', '3.35.3'],
+  ['symfony/http-foundation', '7.4.19'],
+]) {
+  test(`Composer lock excludes the October 2026 vulnerable ${name} range`, async () => {
+    const lock = JSON.parse(await readFile('backend/composer.lock', 'utf8'))
+    const dependency = lock.packages.find((item) => item.name === name)
+    assert.ok(dependency, `${name} must be present`)
+    const safeMinimum = name === 'symfony/http-foundation' && Number(dependency.version.replace(/^v/, '').split('.')[0]) >= 8 ? '8.1.7' : minimum
+    assert.ok(versionAtLeast(dependency.version, safeMinimum), `${name} ${dependency.version} is below ${safeMinimum}`)
+  })
+}
